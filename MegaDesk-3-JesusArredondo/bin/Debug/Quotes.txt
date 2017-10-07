@@ -1,0 +1,6 @@
+Name,Date,Rush Days,Desk With, Desk Depth,Desk Drawers,Price
+Jesus Lopez,10/1/2017 12:00:00 AM,3,33,12,1,410
+Alan,10/1/2017 12:00:00 AM,3,33,12,1,410
+Alan,10/1/2017 12:00:00 AM,3,33,12,1,510
+Alan,10/1/2017 12:00:00 AM,3,33,12,1,310
+Alan,10/1/2017 12:00:00 AM,3,55,12,1,460
