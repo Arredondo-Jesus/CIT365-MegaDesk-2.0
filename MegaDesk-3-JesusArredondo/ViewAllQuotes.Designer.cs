@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.MainMenuButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Results = new System.Windows.Forms.RichTextBox();
+            this.Search = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainMenuButton
@@ -43,24 +43,34 @@
             this.MainMenuButton.UseVisualStyleBackColor = true;
             this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
-            // dataGridView1
+            // Results
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 29);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(247, 150);
-            this.dataGridView1.TabIndex = 7;
+            this.Results.Location = new System.Drawing.Point(25, 22);
+            this.Results.Name = "Results";
+            this.Results.Size = new System.Drawing.Size(234, 166);
+            this.Results.TabIndex = 7;
+            this.Results.Text = "";
+            // 
+            // Search
+            // 
+            this.Search.Location = new System.Drawing.Point(25, 209);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(108, 30);
+            this.Search.TabIndex = 8;
+            this.Search.Text = "Search";
+            this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // ViewAllQuotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.Search);
+            this.Controls.Add(this.Results);
             this.Controls.Add(this.MainMenuButton);
             this.Name = "ViewAllQuotes";
             this.Text = "ViewAllQuotes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -68,6 +78,7 @@
         #endregion
 
         private System.Windows.Forms.Button MainMenuButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.RichTextBox Results;
+        private System.Windows.Forms.Button Search;
     }
 }

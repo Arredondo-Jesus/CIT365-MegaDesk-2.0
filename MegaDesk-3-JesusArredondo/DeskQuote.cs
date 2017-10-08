@@ -156,7 +156,13 @@ namespace MegaDesk_3_JesusArredondo
 
         public void saveQuote(AddQuote addQuote)
         {
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
             writeJSONFile("Quotes.json", addQuote);
+            deskQuotes = readJSONFile("Quotes.json");
+
+            for (int i = 0; i < deskQuotes.Count; i++) {
+                System.Windows.Forms.MessageBox.Show(deskQuotes.ElementAt(i).desk.material);
+            }
         }
         
     }

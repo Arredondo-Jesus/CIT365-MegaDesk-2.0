@@ -25,6 +25,17 @@ namespace MegaDesk_3_JesusArredondo
             mainMenu.Show();
             this.Hide();
         }
+
+        private void Search_Click(object sender, EventArgs e)
+        { 
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+            DeskQuote deskQuote = new DeskQuote();
+            deskQuotes = deskQuote.readJSONFile("Quotes.json");
+
+            for (int i = 0; i < deskQuotes.Count; i++) {
+                this.Results.Text = deskQuotes.ElementAt(i).date; 
+            }
+        }
     }
 }
  
