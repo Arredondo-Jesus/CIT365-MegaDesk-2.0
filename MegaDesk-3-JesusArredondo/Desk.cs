@@ -18,6 +18,7 @@ namespace MegaDesk_3_JesusArredondo
             Rossewood = 300,
             Veneer = 150
         };
+        public string material { get; set; }
 
         public int size { get; set; }
     }

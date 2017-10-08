@@ -26,3 +26,5 @@ D:\GIT Hub repositories\CIT365-MegaDesk-2.0\MegaDesk-3-JesusArredondo\obj\Debug\
 D:\GIT Hub repositories\CIT365-MegaDesk-2.0\MegaDesk-3-JesusArredondo\bin\Debug\MegaDesk-3-JesusArredondo.exe.config
 D:\GIT Hub repositories\CIT365-MegaDesk-2.0\MegaDesk-3-JesusArredondo\bin\Debug\MegaDesk-3-JesusArredondo.exe
 D:\GIT Hub repositories\CIT365-MegaDesk-2.0\MegaDesk-3-JesusArredondo\bin\Debug\MegaDesk-3-JesusArredondo.pdb
+D:\GIT Hub repositories\CIT365-MegaDesk-2.0\MegaDesk-3-JesusArredondo\bin\Debug\Newtonsoft.Json.dll
+D:\GIT Hub repositories\CIT365-MegaDesk-2.0\MegaDesk-3-JesusArredondo\bin\Debug\Newtonsoft.Json.xml

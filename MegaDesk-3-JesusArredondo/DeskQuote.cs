@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections;
-using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -17,6 +16,7 @@ namespace MegaDesk_3_JesusArredondo
         public string clientName { get; set; }
         public int rushDays { get; set; }
         public int price { get; set; }
+        public Desk desk { get; set; }
 
 
         public void calculatePrice(Desk desk, AddQuote addQuote) {
@@ -92,11 +92,8 @@ namespace MegaDesk_3_JesusArredondo
                     for (int j = 0; j < 3; j++)
                     {
                         extraCarges[i, j] = int.Parse(lines[j + (3 * i)]);
-                        System.Windows.Forms.MessageBox.Show(extraCarges[i,j].ToString());
                     }
                 }
-                
-                //System.Windows.Forms.MessageBox.Show(extraCarges.ToString());
             }
             catch (IOException e)
             {
@@ -109,92 +106,57 @@ namespace MegaDesk_3_JesusArredondo
             return extraCarges;
         }
 
-        public List<Desk> readJSONFile(string file) {
-            StreamReader sr = new StreamReader("Quotes.json");
+        public List<DeskQuote> readJSONFile(string file) {
+            StreamReader sr = new StreamReader(file);
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
             string JSONString;
 
             try {
                 while (!sr.EndOfStream) {
                     JSONString = sr.ReadLine();
-                    Desk desk = new Desk();
-                    JsonConvert.DeserializeObject(JSONString);
-
+                    DeskQuote deskQuote = new DeskQuote();
+                    deskQuote = JsonConvert.DeserializeObject<DeskQuote>(JSONString);
+                    deskQuotes.Add(deskQuote);
                 }
             }
-            catch () {
-
+            catch (IOException e) {
+                System.Windows.Forms.MessageBox.Show("There was a problem trying to read the file" +e);
             }
 
-
-            return null;
+            return deskQuotes;
         }
 
-        public void writeJSONFile(string file) {
-
-        }
-
-        public void saveQuote(AddQuote addQuote)
-        {
-            Desk desk = new Desk();
+        public void writeJSONFile(string file, AddQuote addQuote) {
+            desk = new Desk();
 
             desk.width = addQuote.getDeskDepth();
             desk.depth = addQuote.getDeskWidth();
             desk.size = addQuote.getDeskDepth() * addQuote.getDeskWidth();
-
             desk.drawers = addQuote.getDeskDrawers();
-            addQuote.setSize(desk.size);
+            desk.material = addQuote.getMaterial();
 
-            
             this.clientName = addQuote.getClientName();
             this.rushDays = addQuote.getRushDays();
 
             this.calculatePrice(desk, addQuote);
             this.date = addQuote.getDate();
+            addQuote.setSize(desk.size);
             addQuote.setPrice(this.price);
 
-
-            /*
-            string name = this.getClientName();
-            string date = this.getDate().ToString();
-            string width = desk.getDeskWidth().ToString();
-            string depth = desk.getDeskDepth().ToString();
-            string drawwers = desk.getDrawers().ToString();
-            string rushDays = this.getRushDays().ToString();
-            string price = this.getPrice().ToString();
-            string size = desk.getSize().ToString();
-            
-
-            try
-            {
-                StreamReader streamReader = new StreamReader("Quotes.txt");
-                if (streamReader.ReadLine() == null)
-                {
-                    streamReader.Close();
-                    StreamWriter streamWriter1 = new StreamWriter("Quotes.txt", append: true);
-                    string header = "Name,Date,Rush Days,Desk With, Desk Depth,Desk Drawers,Price";
-                    streamWriter1.WriteLine(header);
-                    streamWriter1.Close();
-                }
-                else
-                {
-                    streamReader.Close();
-                }
-
+            try {
+                StreamWriter sw = new StreamWriter(file, append:true);
+                string jsonString = JsonConvert.SerializeObject(this);
+                sw.WriteLine(jsonString);
+                sw.Close();
             }
-            catch (IOException e)
-            {
-                if (e.Source != null)
-                {
-                    System.Windows.Forms.MessageBox.Show("An error has occur while trying to open the file");
-                }
-            }
-            finally {
-                StreamWriter streamWriter = new StreamWriter("Quotes.txt", append: true);
-                //string content = name + "," + date + "," + rushDays + "," + width + "," + depth + "," + drawwers + ","
-                //    + price;
-                streamWriter.WriteLine(content);
-                streamWriter.Close();
-            } */
+            catch (IOException e) {
+
+            }    
+        }
+
+        public void saveQuote(AddQuote addQuote)
+        {
+            writeJSONFile("Quotes.json", addQuote);
         }
         
     }
