@@ -35,7 +35,7 @@
             // 
             // MainMenuButton
             // 
-            this.MainMenuButton.Location = new System.Drawing.Point(151, 209);
+            this.MainMenuButton.Location = new System.Drawing.Point(441, 261);
             this.MainMenuButton.Name = "MainMenuButton";
             this.MainMenuButton.Size = new System.Drawing.Size(108, 30);
             this.MainMenuButton.TabIndex = 6;
@@ -47,13 +47,13 @@
             // 
             this.Results.Location = new System.Drawing.Point(25, 22);
             this.Results.Name = "Results";
-            this.Results.Size = new System.Drawing.Size(234, 166);
+            this.Results.Size = new System.Drawing.Size(524, 220);
             this.Results.TabIndex = 7;
             this.Results.Text = "";
             // 
             // Search
             // 
-            this.Search.Location = new System.Drawing.Point(25, 209);
+            this.Search.Location = new System.Drawing.Point(25, 261);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(108, 30);
             this.Search.TabIndex = 8;
@@ -65,7 +65,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(575, 313);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.Results);
             this.Controls.Add(this.MainMenuButton);

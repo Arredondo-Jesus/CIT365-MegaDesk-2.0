@@ -32,9 +32,32 @@ namespace MegaDesk_3_JesusArredondo
             DeskQuote deskQuote = new DeskQuote();
             deskQuotes = deskQuote.readJSONFile("Quotes.json");
 
+            this.Results.AppendText("Date" + "\t\t");
+            this.Results.AppendText("Client" + "\t");
+            this.Results.AppendText("Depth" + "\t");
+            this.Results.AppendText("Width" + "\t");
+            this.Results.AppendText("Sice" + "\t");
+            this.Results.AppendText("Material" + "\t\t");
+            this.Results.AppendText("Price" + "\n");
+
             for (int i = 0; i < deskQuotes.Count; i++) {
-                this.Results.Text = deskQuotes.ElementAt(i).date; 
+
+                this.Results.AppendText(deskQuotes.ElementAt(i).date + "\t");
+                this.Results.AppendText(deskQuotes.ElementAt(i).clientName + "\t");
+                this.Results.AppendText(deskQuotes.ElementAt(i).desk.width + "\t");
+                this.Results.AppendText(deskQuotes.ElementAt(i).desk.depth + "\t");
+                this.Results.AppendText(deskQuotes.ElementAt(i).desk.size + "\t");
+                if (deskQuotes.ElementAt(i).desk.material.Equals("Rossewood"))
+                {
+                    this.Results.AppendText(deskQuotes.ElementAt(i).desk.material + "\t");
+                }
+                else {
+                    this.Results.AppendText(deskQuotes.ElementAt(i).desk.material + "\t\t");
+                }
+                this.Results.AppendText( "$" + string.Format("{0:n0}",deskQuotes.ElementAt(i).price) + "\n");
             }
+
+            this.Search.Enabled = false;
         }
     }
 }

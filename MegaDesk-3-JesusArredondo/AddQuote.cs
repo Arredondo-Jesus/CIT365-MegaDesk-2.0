@@ -117,11 +117,11 @@ namespace MegaDesk_3_JesusArredondo
         }
 
         public void setSize(int size) {
-            this.size.Text = size.ToString();
+            this.size.Text = string.Format("{0:n0}", size.ToString());
         }
 
         public void setPrice(int price) {
-            this.Price.Text = price.ToString();
+            this.Price.Text = "$" + string.Format("{0:n0}" , price.ToString());
         }
 
         public void setDate(string date) {
