@@ -123,6 +123,7 @@ namespace MegaDesk_3_JesusArredondo
                 System.Windows.Forms.MessageBox.Show("There was a problem trying to read the file" +e);
             }
 
+            sr.Close();
             return deskQuotes;
         }
 
@@ -158,6 +159,38 @@ namespace MegaDesk_3_JesusArredondo
         {
             writeJSONFile("Quotes.json", addQuote);
         }
-        
+
+        public List<DeskQuote> searchQuotes(string file, string searchBy, SearchAllQuotes searchAllQuotes) {
+            StreamReader sr = new StreamReader(file);
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+            string JSONString;
+
+            try
+            {
+                while (!sr.EndOfStream)
+                {
+                    JSONString = sr.ReadLine();
+                    DeskQuote deskQuote = new DeskQuote();
+                    deskQuote = JsonConvert.DeserializeObject<DeskQuote>(JSONString);
+                
+                    if (searchAllQuotes.getSearchBy().Equals("Client")) {
+                        if (searchAllQuotes.getCriteria() == deskQuote.clientName) {
+                            deskQuotes.Add(deskQuote);
+                        }
+                    } else if (searchAllQuotes.getSearchBy().Equals("Material")) {
+                        if (searchAllQuotes.getCriteria() == deskQuote.desk.material)
+                        {
+                            deskQuotes.Add(deskQuote);
+                        }
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                System.Windows.Forms.MessageBox.Show("There was a problem trying to read the file" + e);
+            }
+            sr.Close();
+            return deskQuotes;
+        }
     }
 }
